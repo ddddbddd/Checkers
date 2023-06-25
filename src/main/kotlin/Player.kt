@@ -12,7 +12,7 @@ class Player(
                 " and he/she play for ${if (colour == "B") "Black" else "White"}")
     }
 
-    fun colorOfSecond(): String {
+    private fun colorOfSecond(): String {
         if (this.colour == "W") {
             return "B"
         }
