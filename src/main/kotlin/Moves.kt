@@ -62,8 +62,7 @@ class Moves  (
                 moving(who)
             } else {
                 count++
-                board.board[digit][letter] = board.board[toDigit][toLetter]
-                    .also { board.board[toDigit][toLetter] = board.board[digit][letter] }
+                replaceFigureAndMove(digit, letter, toDigit, toLetter)
             }
             becomeKing(toDigit, toLetter, who)
         } else {
@@ -77,11 +76,15 @@ class Moves  (
             moving(who)
         } else {
             count++
-            board.board[digit][letter] = board.board[toDigit][toLetter]
-                .also { board.board[toDigit][toLetter] = board.board[digit][letter] }
+            replaceFigureAndMove(digit, letter, toDigit, toLetter)
         }
     }
 
+    fun replaceFigureAndMove(digit, letter, toDigit, toLetter) {
+        board.board[digit][letter] = board.board[toDigit][toLetter]
+            .also { board.board[toDigit][toLetter] = board.board[digit][letter] }
+    }
+    
     fun becomeKing(digit: Int, letter: Int, who: Int) {
         if (who % 2 == 0 && digit == 1) {
             board.board[digit][letter] = "WhK|"
