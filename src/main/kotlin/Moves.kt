@@ -4,7 +4,6 @@ class Moves  (
         private val win: Win,
         private val king: King
 )  {
-
     enum class letters {
         none,
         A,
@@ -39,6 +38,7 @@ class Moves  (
         println("Where do you want to move figure from $cell?")
         val to = readln().uppercase()
         val digitTo = to[1].digitToInt()
+        
         if (board.board[digit][toEnum(cell[0])] != "...|" ||
             board.board[digit][toEnum(cell[0])] != "___|") {
             if (board.board[digit][toEnum(cell[0])] == "WhM|" ||
