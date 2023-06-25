@@ -56,7 +56,7 @@ class Moves  (
 
     }
 
-    fun manMoving(digit: Int, letter: Int, toDigit: Int, toLetter: Int, who: Int) {
+    private fun manMoving(digit: Int, letter: Int, toDigit: Int, toLetter: Int, who: Int) {
         if (!man.killing(digit, letter, toDigit, toLetter)) {
             if (!man.whereCanItGo(digit, letter, toDigit, toLetter)) {
                 moving(who)
@@ -71,7 +71,7 @@ class Moves  (
         }
     }
 
-    fun kingMoving(digit: Int, letter: Int, toDigit: Int, toLetter: Int, who: Int) {
+    private fun kingMoving(digit: Int, letter: Int, toDigit: Int, toLetter: Int, who: Int) {
         if (!king.whereCanItGo(digit, letter, toDigit, toLetter)) {
             moving(who)
         } else {
@@ -80,12 +80,12 @@ class Moves  (
         }
     }
 
-    fun replaceFigureAndMove(digit, letter, toDigit, toLetter) {
+    private fun replaceFigureAndMove(digit, letter, toDigit, toLetter) {
         board.board[digit][letter] = board.board[toDigit][toLetter]
             .also { board.board[toDigit][toLetter] = board.board[digit][letter] }
     }
     
-    fun becomeKing(digit: Int, letter: Int, who: Int) {
+    private fun becomeKing(digit: Int, letter: Int, who: Int) {
         if (who % 2 == 0 && digit == 1) {
             board.board[digit][letter] = "WhK|"
         } else if (who % 2 != 0 && digit == 8) {
